@@ -1,0 +1,75 @@
+version: '3.6'
+
+services:
+
+  ketabot-app-server:
+    container_name: ketabot-app-server
+    build:
+      context: ./server
+    user: '${UID:-1000}:${GID:-1000}'
+    command: npm run start:production
+    restart: always
+    env_file:
+      - ./server/.env.docker.production
+#    ports:
+#      - 5000:5000
+    volumes:
+      - ./server/dist:/usr/src/app/dist
+      - ./server/node_modules:/usr/src/app/node_modules
+    networks:
+      - ketabot
+
+
+
+  ketabot-app-client:
+    container_name: ketabot-app-client
+    build:
+      context: ./bot
+    user: '${UID:-1000}:${GID:-1000}'
+    command: npm run start:production
+    restart: always
+    env_file:
+      - ./bot/.env.docker.production
+#    ports:
+#      - 5000:5000
+    volumes:
+      - ./bot/dist:/usr/src/app/dist
+      - ./bot/node_modules:/usr/src/app/node_modules
+    networks:
+      - ketabot
+
+  redis-ketabot:
+    image: bitnami/redis:latest
+    container_name: redis-ketabot
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    restart: always
+    #    volumes:
+    #      - redis:/bitnami/redis/data
+    networks:
+      - ketabot
+    ports:
+      - 6380:6379
+
+  mongodb-ketabot:
+    container_name: mongodb-ketabot
+    image: bitnami/mongodb:latest
+    volumes:
+      - 'mongodb:/bitnami'
+    environment:
+      - MONGODB_USERNAME=ketabot
+      - MONGODB_PASSWORD=pasSw0rD
+      - MONGODB_DATABASE=ketabot
+    networks:
+      - ketabot
+#    ports:
+#      - 27021:27017
+
+
+networks:
+  ketabot:
+    external: true
+#
+volumes:
+  mongodb:
+#  redis:

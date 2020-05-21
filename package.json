@@ -1,0 +1,13 @@
+{
+  "name": "ketabot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+
+    "deploy:production": "scp -rv  docker-compose-production.yml package.json  fagha@mranjbar.ir:/opt/ketabot && echo 'Codes deployed'"
+  },
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,46 @@
+{
+  "name": "book-client",
+  "version": "1.0.18",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "build": "webpack",
+    "lint": "./node_modules/.bin/eslint src",
+    "watch:build": "webpack --watch",
+    "build:watch": "webpack --watch",
+    "lint:fix": "./node_modules/.bin/eslint src --fix",
+    "start:dev": "./node_modules/.bin/nodemon ./dist/bot.js --watch",
+    "start:production": "./node_modules/.bin/pm2-runtime start ./dist/bot.js --watch",
+    "deploy:production": "npm  run lint && npm run build   && scp -rv dist  .env.docker.production Dockerfile package.json  fagha@mranjbar.ir:/opt/ketabot/bot && echo 'Codes deployed'"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "^7.9.0",
+    "@sentry/node": "^4.5.0",
+    "array-includes": "^3.0.3",
+    "axios": "^0.17.1",
+    "babel-loader": "^8.1.0",
+    "body-parser": "^1.18.2",
+    "dotenv": "^6.2.0",
+    "eslint": "^6.8.0",
+    "eslint-loader": "^4.0.0",
+    "express": "^4.15.4",
+    "fs": "0.0.1-security",
+    "hapi": "^16.6.2",
+    "hashmap": "^2.3.0",
+    "mongoose": "^4.13.5",
+    "node-telegram-bot-api": "^0.28.0",
+    "pm2": "^4.3.0",
+    "redis": "^2.8.0",
+    "request": "^2.81.0",
+    "safe-buffer": "^5.1.1",
+    "webpack": "^4.42.1",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "devDependencies": {
+    "webpack-cli": "^3.3.11"
+  }
+}

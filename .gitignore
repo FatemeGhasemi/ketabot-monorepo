@@ -1,0 +1,10 @@
+./bot/node_modules
+./server/node_modules
+./server/dist/*
+./bot/dist/*
+.idea
+./bot/.env.docker.production
+./server/.env.docker.production
+./server/package-lock.json
+./bot/package-lock.json
+.DS_Store
