@@ -33,7 +33,7 @@
     "hashmap": "^2.3.0",
     "mongoose": "^4.13.5",
     "node-telegram-bot-api": "^0.28.0",
-    "pm2": "^4.3.0",
+    "pm2": "^5.2.0",
     "redis": "^2.8.0",
     "request": "^2.81.0",
     "safe-buffer": "^5.1.1",
