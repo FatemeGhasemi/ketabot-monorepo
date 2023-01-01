@@ -37,10 +37,10 @@
     "redis": "^2.8.0",
     "request": "^2.81.0",
     "safe-buffer": "^5.1.1",
-    "webpack": "^4.42.1",
+    "webpack": "^5.75.0",
     "webpack-node-externals": "^1.7.2"
   },
   "devDependencies": {
-    "webpack-cli": "^3.3.11"
+    "webpack-cli": "^5.0.1"
   }
 }
